@@ -230,30 +230,32 @@ join lines in basicTxtLst by line break char
 I have chosen Eligible Banners to work on. The below is the pseudocode. 
 
 ```  
-Solution class:
+//Solution class
 Class Banner
-This class contains 8 Methods added
+//This class contains 8 Methods added
 - checkGenderSexOrientationForBanner() returns varGenderSexOrientation (boolean)
-  - Logic summary: This method will check the diversityInfo for (gender is not Cisgender) or (sex is Other/Intersex) or (sexualOrientation is not Heterosexual)
+//Logic summary: This method will check the diversityInfo for (gender is not Cisgender) or (sex is Other/Intersex) or (sexualOrientation is not Heterosexual)
 
 - checkDisablilityForBanner() return boolean varDisablilityForBanner (boolean)
-  - Logic summary: This method will check if there is any disablity
+//Logic summary: This method will check if there is any disablity
 
 - checkRaceForBanner() return boolean varRaceForBanner (boolean)
-  - Logic summary: This method will check if (race contains any of American Indian or Alaska Native and Native Hawaiian or Other Pacific Islander)
+//Logic summary: This method will check if (race contains any of American Indian or Alaska Native and Native Hawaiian or Other Pacific Islander)
 
 - getDiversityCampaignBannerName(varGenderSexOrientation, varDisablilityForBanner, varRaceForBanner) returns bannerName 
-  - Logic summary: This method will return the bannerName if any of the above checks are true
+//Logic summary: This method will return the bannerName if any of the above checks are true
 
 - checkEntryLevelEmployEligibilityAndGetBannerName() returns bannerName
-    - Logic summary: This method will check if the applicant is eligible for this program if the total length of prior experiences with employmentType as Full-time is no longer than a year
+//Logic summary: This method will check if the applicant is eligible for this program if the total length of prior experiences with employmentType as Full-time is no longer than a year
 
 - checkEnglishScoreEligibilityAndGetBannerName() return  bannerName
-    - Logic summary: This method will check if the applicant is eligible for this handicap if nativeLanguages doesn't contain EN
+//Logic summary: This method will check if the applicant is eligible for this handicap if nativeLanguages doesn not contain EN
 
-- getBannerName() // This method calls all above the methods and gets Banner Name depending on the diversityInfo
+- getBannerName() 
+// Logic summary: This method calls all above the methods and gets Banner Name depending on the diversityInfo
 
-- getBannerLinkForProvidedBannerName(bannerName) // This method gets the link to an internal SCM page for the Banner containing more information for hiring managers to click
+- getBannerLinkForProvidedBannerName(bannerName) 
+// Logic Summary: This method gets the link to an internal SCM page for the Banner containing more information for hiring managers to click
   
   ========================================    
 Solution object:
