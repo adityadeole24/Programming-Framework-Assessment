@@ -65,10 +65,13 @@ The good part about this pseudocode is that it provides basic understanding of t
 
 What is bad and why?
 
-The bad part about this pseudocode is that it is missing error handling. The code assumes various aspects of the applicant for e.g. firstname always exist and is correctly formatted. This code also has insufficient comments. 
-
+- The code checks else if condition which is incorrect. This condition will not be checked if the first condition is true. In this scenario we need to display the applicant's name along with the Banner values and scores.
+- This psuedocode is missing error handling. The code assumes various aspects of the applicant for e.g. firstname always exist and is correctly formatted.
+- This code also has insufficient comments.
+  
 How could this pseudocode be improved?
 
+- Change all the else if conditions with if conditions to ensure all the conditions are being checked to produce appropriate outcome. 
 - Adding error handling will make the code more powerful.
 - Adding comprehensive explainations will provide clear information for understanding each part of the code. 
 
@@ -132,13 +135,13 @@ for key, lst in basicObj
     if option is "identity"
         add `<b>${key}:</b> ${val}` to basicTxtLst
 
-    else if option is "latest"
+    if option is "latest"
         className = lst[2]
         create an instance of Class with className for each element in val
         descendingly sort instances by instance.getSortVal()
         add sortedInstances[0].createString() to basicTxtLst
 
-    else if option is "list"
+    if option is "list"
        className = lst[3]
        Assign a value to language and a comma seprated list
        add `<b>${key}:,</b> ${list}` to basicTxtLst
@@ -204,13 +207,13 @@ for key, lst in basicObj
     if option is "identity"
         add `<b>${key}:</b> ${val}` to basicTxtLst
 
-    else if option is "latest"
+    if option is "latest"
         className = lst[2]
         create an instance of Class with className for each element in val
         descendingly sort instances by instance.getSortVal()
         add sortedInstances[0].createString() to basicTxtLst
 
-    else if option is "descending"
+    if option is "descending"
        className = lst[3]
        create an instance of Class with className for each element in val
        Sort experiences by start date in descending order
@@ -231,7 +234,7 @@ I have chosen Eligible Banners to work on. The below is the pseudocode.
 
 ```  
 //Solution class
-Class Banner
+Class banner
 //This class contains 8 Methods added
 - checkGenderSexOrientationForBanner() returns varGenderSexOrientation (boolean)
 //Logic summary: This method will check the diversityInfo for (gender is not Cisgender) or (sex is Other/Intersex) or (sexualOrientation is not Heterosexual)
