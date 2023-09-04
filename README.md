@@ -73,12 +73,12 @@ How could this pseudocode be improved?
 - Adding comprehensive explainations will provide clear information for understanding each part of the code. 
 
 2. Revise this pseudocode (feel free to change its structure as you see fit) to match the hiring managers' new requests. The hiring managers change their minds and now want:
-- the applicant's native languages to be displayed
-- all of the experiences to be displayed in descending order instead of just the most recent one (still keep displaying only most recent education)
+i) the applicant's native languages to be displayed
+ii) all of the experiences to be displayed in descending order instead of just the most recent one (still keep displaying only most recent education)
 
 **Answer**
 
-- the applicant's native languages to be displayed
+i) the applicant's native languages to be displayed
 
 The psuedocode is updated as below. 
 - The "Native Languages" section is added to basicObj with a rendering option for list.
@@ -149,7 +149,7 @@ join lines in basicTxtLst by line break char
 
 ```
 
-- all of the experiences to be displayed in descending order instead of just the most recent one (still keep displaying only most recent education)
+ii) all of the experiences to be displayed in descending order instead of just the most recent one (still keep displaying only most recent education)
 
 The psuedocode is updated as below. 
 - A new rendering option called "descending" is added.
@@ -314,4 +314,3 @@ In this scenario, it is very simple to update this psuedocode with a new banner 
 
 In this scenario, the conditions needs to be udpated with regards to the new eligibility changes. 
 
-3. 
