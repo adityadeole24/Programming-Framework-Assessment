@@ -79,9 +79,80 @@ Replace the elseif condition with an if condition so that all the required rende
 
 - the applicant's native languages to be displayed
 
+The psuedocode is updated as below. 
+- The "Native Languages" section is added to basicObj with a rendering option for list.
+- A comma seprated language list is appended to the basicTxtLst.  
 
+```
+/*
+Note:
+- 0th index
+- `${variable} string` for string format
+/*
+
+// class for complicate objects (e.g. education, experience)
+create Class(es) with methods
+- createString() to create a string in a certain format 
+- getSortVal() to get value for sorting with other instances in the same class
+- 
+
+create an object (referred as basicObj) for basic info part 
+- key -> text to be shown
+- value -> a collection of 
+    - corresponding value
+    - rendering option 
+    - (optional) add. params depending on rendering option
+- ex. {"Name": 
+          [
+            `${input['fisrtName']} ${input['lastName']}`, // corresponding value
+            "identity" // rendering option
+          ],
+       "Most recent education": 
+          [ 
+            input['educations'], // corresponding value
+            "latest", // rendering option
+            "education" // Class name for rendering option
+          ]
+       "Native Language":
+        [
+            input['nativeLanguages'], //corresponding value      
+            "list", // rendering option
+            "language" // Class name for rendering option
+        ]   
+       }
+
+// start rendering basic info
+basicTxtLst = [] // store lines for basic info
+for key, lst in basicObj
+
+    val = lst[0] // corresponding value
+    option = lst[1] // rendering option 
+
+    if option is "identity"
+        add `<b>${key}:</b> ${val}` to basicTxtLst
+
+    if option is "latest"
+        className = lst[2]
+        create an instance of Class with className for each element in val
+        descendingly sort instances by instance.getSortVal()
+        add sortedInstances[0].createString() to basicTxtLst
+
+    if option is "list"
+       className = lst[3]
+       Assign a value to language and a comma seprated list
+       add `<b>${key}:,</b> ${list}` to basicTxtLst
+
+      
+
+join lines in basicTxtLst by line break char
+
+```
 
 - all of the experiences to be displayed in descending order instead of just the most recent one (still keep displaying only most recent education)
+
+The psuedocode is updated as below. 
+- A new rendering option called "descending" is added.
+- When rendering experiences with the "descending" option, all experiences are sorted by their startDate in descending order, and each experience is added to basicTxtLst.
 
 ```
 
