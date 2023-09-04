@@ -61,15 +61,16 @@ join lines in basicTxtLst by line break char
 
 What is good and why?
 
-The good part about this pseudocode is that it provides basic understanding of the scenario. The code has defined the classes and methods separately and it also defines how it will render through the list. 
+The good part about this pseudocode is that it provides basic understanding of the scenario. The code structure defines the classes and methods separately and it also defines the basic rendering struture. 
 
 What is bad and why?
 
-The bad part about this pseudocode is that the elseif condition for the "latest" rendering option will not be met in any case if the conditions above it are met.
+The bad part about this pseudocode is that it is missing error handling. The code assumes various aspects of the applicant for e.g. firstname always exist and is correctly formatted. This code also has insufficient comments. 
 
 How could this pseudocode be improved?
 
-Replace the elseif condition with an if condition so that all the required rendering options are checked before producing an output. 
+- Adding error handling will make the code more powerful.
+- Adding comprehensive explainations will provide clear information for understanding each part of the code. 
 
 2. Revise this pseudocode (feel free to change its structure as you see fit) to match the hiring managers' new requests. The hiring managers change their minds and now want:
 - the applicant's native languages to be displayed
@@ -131,13 +132,13 @@ for key, lst in basicObj
     if option is "identity"
         add `<b>${key}:</b> ${val}` to basicTxtLst
 
-    if option is "latest"
+    else if option is "latest"
         className = lst[2]
         create an instance of Class with className for each element in val
         descendingly sort instances by instance.getSortVal()
         add sortedInstances[0].createString() to basicTxtLst
 
-    if option is "list"
+    else if option is "list"
        className = lst[3]
        Assign a value to language and a comma seprated list
        add `<b>${key}:,</b> ${list}` to basicTxtLst
@@ -203,13 +204,13 @@ for key, lst in basicObj
     if option is "identity"
         add `<b>${key}:</b> ${val}` to basicTxtLst
 
-    if option is "latest"
+    else if option is "latest"
         className = lst[2]
         create an instance of Class with className for each element in val
         descendingly sort instances by instance.getSortVal()
         add sortedInstances[0].createString() to basicTxtLst
 
-    if option is "descending"
+    else if option is "descending"
        className = lst[3]
        create an instance of Class with className for each element in val
        Sort experiences by start date in descending order
@@ -226,21 +227,9 @@ join lines in basicTxtLst by line break char
   
 **Answer**
 
-I have chosen Eligible Banners to work on. The below is the pseudocode.  
+I have chosen Eligible Banners to work on. The below is the pseudocode. 
 
-```
-
-Note:
-- 0th index
-- `${variable} string` for string format
-/*
-
-// class for complicate objects (e.g. education, experience)
-create Class(es) with methods
-- createString() to create a string in a certain format
-- getSortVal() to get value for sorting with other instances in the same class
-
-  ========================================    
+```  
 Solution class:
 Class Banner
 This class contains 8 Methods added
@@ -265,25 +254,7 @@ This class contains 8 Methods added
 - getBannerName() // This method calls all above the methods and gets Banner Name depending on the diversityInfo
 
 - getBannerLinkForProvidedBannerName(bannerName) // This method gets the link to an internal SCM page for the Banner containing more information for hiring managers to click
-  ========================================    
-create an object (referred as basicObj) for basic info part
-- key -> text to be shown
-- value -> a collection of
-    - corresponding value
-    - rendering option
-    - (optional) add. params depending on rendering option
-- ex. {"Name":
-          [
-            `${input['fisrtName']} ${input['lastName']}`, // corresponding value
-            "identity" // rendering option
-          ],
-       "Most recent education":
-          [
-            input['educations'], // corresponding value
-            "latest", // rendering option
-            "education" // Class name for rendering option
-          ]
-       }
+  
   ========================================    
 Solution object:
 {
@@ -319,28 +290,9 @@ Solution object:
         ],
 
     }
-  ========================================    
-// start rendering basic info
-basicTxtLst = [] // store lines for basic info
-for key, lst in basicObj
-
-    val = lst[0] // corresponding value
-    option = lst[1] // rendering option
-
-    if option is "identity"
-        add `<b>${key}:</b> ${val}` to basicTxtLst
-   
-    if option is "identity2"
-        add `<b>${key}:</b> ${val}` to basicTxtLst
-
-    if option is "latest"
-        className = lst[2]
-        create an instance of Class with className for each element in val
-        descendingly sort instances by instance.getSortVal()
-        add sortedInstances[0].createString() to basicTxtLst
 
   ========================================    
-  Solution added rendering option:
+  Solution rendering option:
     if option is "condition"
         className = lst[2]
         create an instance of Banner class with className for each element in val
