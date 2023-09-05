@@ -98,7 +98,7 @@ Note:
 create Class(es) with methods
 - createString() to create a string in a certain format 
 - getSortVal() to get value for sorting with other instances in the same class
-- 
+- getCommaSperatedLanguage() for appending comma seprated language list to the basicTxtLst
 
 create an object (referred as basicObj) for basic info part 
 - key -> text to be shown
@@ -142,11 +142,9 @@ for key, lst in basicObj
         add sortedInstances[0].createString() to basicTxtLst
 
     if option is "list"
-       className = lst[3]
-       Assign a value to language and a comma seprated list
-       add `<b>${key}:,</b> ${list}` to basicTxtLst
-
-      
+       className = lst[2]
+       Create an instance of Class with className for each element in val
+       add instance.getCommaSperatedLanguage() to basicTxtLst
 
 join lines in basicTxtLst by line break char
 
@@ -214,7 +212,7 @@ for key, lst in basicObj
         add sortedInstances[0].createString() to basicTxtLst
 
     if option is "descending"
-       className = lst[3]
+       className = lst[2]
        create an instance of Class with className for each element in val
        Sort experiences by start date in descending order
        add sortedInstances[0].createString() to basicTxtLst
